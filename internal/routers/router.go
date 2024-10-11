@@ -1,25 +1,41 @@
 package routers
 
 import (
-	"net/http"
-
-	"github.com/dinos/go-ecommerce-be-api/internal/controllers"
+	"fmt"
+	. "github.com/dinos/go-ecommerce-be-api/internal/controllers"
 	"github.com/gin-gonic/gin"
 )
 
-func NewRouter() *gin.Engine {
-	r := gin.Default()
-	v1 := r.Group("/v1/2024")
-	{
-		v1.GET("/ping:name", Pong)
-     v1.GET("/users",controllers.NewUserController().GetUserById)
+func AA() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		fmt.Println("Before --> AA")
+		c.Next()
+		fmt.Println("After --> AA")
 	}
-	return r
+
+}
+func BB() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		fmt.Println("Before --> BB")
+		c.Next()
+		fmt.Println("After --> BB")
+	}
+
 }
 
-func Pong(c *gin.Context) {
-	name := c.Param("name")
-	c.JSON(http.StatusOK, gin.H{
-		"message": "pong " + name,
-	})
+func CC(c *gin.Context) {
+	fmt.Println("Before --> CC")
+	c.Next()
+	fmt.Println("After --> CC")
+
+}
+func NewRouter() *gin.Engine {
+	r := gin.Default()
+	r.Use(AA(), BB(), CC)
+	v1 := r.Group("/v1/2024")
+	{
+		v1.GET("/ping", NewPongController().Pong)
+		v1.GET("/users", NewUserController().GetUserById)
+	}
+	return r
 }
