@@ -1,1 +1,10 @@
 {"level":"INFO","time":"2024-10-17T10:48:53.003+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
+{"level":"INFO","time":"2024-10-22T11:00:26.001+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
+{"level":"INFO","time":"2024-10-22T11:00:26.026+0700","caller":"initialize/mysql.go:28","msg":"Init Mysql success"}
+{"level":"ERROR","time":"2024-10-22T11:00:26.433+0700","caller":"initialize/redis.go:23","msg":"redis init Error","error":"read: connection reset by peer","stacktrace":"github.com/dinos/go-ecommerce-be-api/internal/initialize.InitRedis\n\t/Users/dinos/Desktop/go-ecommerce-be-api/internal/initialize/redis.go:23\ngithub.com/dinos/go-ecommerce-be-api/internal/initialize.Run\n\t/Users/dinos/Desktop/go-ecommerce-be-api/internal/initialize/run.go:15\nmain.main\n\t/Users/dinos/Desktop/go-ecommerce-be-api/cmd/server/main.go:7\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:272"}
+{"level":"INFO","time":"2024-10-22T11:04:10.192+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
+{"level":"INFO","time":"2024-10-22T11:04:10.200+0700","caller":"initialize/mysql.go:28","msg":"Init Mysql success"}
+{"level":"ERROR","time":"2024-10-22T11:04:10.606+0700","caller":"initialize/redis.go:23","msg":"redis init Error","error":"read: connection reset by peer","stacktrace":"github.com/dinos/go-ecommerce-be-api/internal/initialize.InitRedis\n\t/Users/dinos/Desktop/go-ecommerce-be-api/internal/initialize/redis.go:23\ngithub.com/dinos/go-ecommerce-be-api/internal/initialize.Run\n\t/Users/dinos/Desktop/go-ecommerce-be-api/internal/initialize/run.go:15\nmain.main\n\t/Users/dinos/Desktop/go-ecommerce-be-api/cmd/server/main.go:7\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:272"}
+{"level":"INFO","time":"2024-10-22T11:09:17.011+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
+{"level":"INFO","time":"2024-10-22T11:09:17.028+0700","caller":"initialize/mysql.go:28","msg":"Init Mysql success"}
+{"level":"INFO","time":"2024-10-22T11:09:17.048+0700","caller":"initialize/redis.go:41","msg":"value score is::","score":"100"}

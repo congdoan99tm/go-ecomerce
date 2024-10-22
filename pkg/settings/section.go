@@ -3,9 +3,14 @@ package settings
 import "time"
 
 type Config struct {
+	Server ServerSettings `mapstructure:"server"`
 	Mysql  MySqlSettings  `mapstructure:"mysql"`
 	Logger LoggerSettings `mapstructure:"logger"`
 	Redis  RedisSetting   `mapstructure:"redis"`
+}
+type ServerSettings struct {
+	Port string `mapstructure:"port"`
+	Mode string `mapstructure:"mode"`
 }
 
 type RedisSetting struct {
