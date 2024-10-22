@@ -8,3 +8,11 @@
 {"level":"INFO","time":"2024-10-22T11:09:17.011+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
 {"level":"INFO","time":"2024-10-22T11:09:17.028+0700","caller":"initialize/mysql.go:28","msg":"Init Mysql success"}
 {"level":"INFO","time":"2024-10-22T11:09:17.048+0700","caller":"initialize/redis.go:41","msg":"value score is::","score":"100"}
+{"level":"INFO","time":"2024-10-22T14:02:13.271+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
+{"level":"ERROR","time":"2024-10-22T14:02:13.272+0700","caller":"initialize/mysql.go:15","msg":"Init Mysql failed","error":"dial tcp 127.0.0.1:33306: connect: connection refused","stacktrace":"github.com/dinos/go-ecommerce-be-api/internal/initialize.checkErrorPanic\n\t/Users/dinos/Desktop/go-ecommerce-be-api/internal/initialize/mysql.go:15\ngithub.com/dinos/go-ecommerce-be-api/internal/initialize.InitMysql\n\t/Users/dinos/Desktop/go-ecommerce-be-api/internal/initialize/mysql.go:27\ngithub.com/dinos/go-ecommerce-be-api/internal/initialize.Run\n\t/Users/dinos/Desktop/go-ecommerce-be-api/internal/initialize/run.go:14\nmain.main\n\t/Users/dinos/Desktop/go-ecommerce-be-api/cmd/server/main.go:7\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:272"}
+{"level":"INFO","time":"2024-10-22T14:02:51.299+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
+{"level":"INFO","time":"2024-10-22T14:02:51.323+0700","caller":"initialize/mysql.go:28","msg":"Init Mysql success"}
+{"level":"INFO","time":"2024-10-22T14:02:51.349+0700","caller":"initialize/redis.go:41","msg":"value score is::","score":"100"}
+{"level":"INFO","time":"2024-10-22T14:09:40.741+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
+{"level":"INFO","time":"2024-10-22T14:09:40.751+0700","caller":"initialize/mysql.go:28","msg":"Init Mysql success"}
+{"level":"INFO","time":"2024-10-22T14:09:40.783+0700","caller":"initialize/redis.go:41","msg":"value score is::","score":"100"}

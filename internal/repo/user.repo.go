@@ -1,12 +1,27 @@
 package repo
 
-type UserRepo struct {
+//type UserRepo struct {
+//}
+//
+//func NewUserRepo() *UserRepo {
+//	return &UserRepo{}
+//}
+//
+//func (ul *UserRepo) GetInfoUser() string {
+//	return "Tip js"
+//}
+
+type IUserRepo interface {
+	GetUserByEmail(email string) bool
 }
 
-func NewUserRepo() *UserRepo {
-	return &UserRepo{}
+type userRepo struct{}
+
+func (ur *userRepo) GetUserByEmail(email string) bool {
+	//TODO implement me
+	return true
 }
 
-func (ul *UserRepo) GetInfoUser() string {
-	return "Tip js"
+func NewUserRepo() IUserRepo {
+	return &userRepo{}
 }
