@@ -32,10 +32,11 @@ func CC(c *gin.Context) {
 func NewRouter() *gin.Engine {
 	r := gin.Default()
 	r.Use(AA(), BB(), CC)
+	//userController, _ := wire.InitUserRouterHandle()
 	v1 := r.Group("/v1/2024")
 	{
 		v1.GET("/ping", NewPongController().Pong)
-		v1.GET("/users", NewUserController().GetUserById)
+		//v1.GET("/users", NewUserController().GetUserById)
 	}
 	return r
 }

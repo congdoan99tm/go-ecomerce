@@ -6,6 +6,7 @@ import (
 	"github.com/dinos/go-ecommerce-be-api/internal/po"
 	"go.uber.org/zap"
 	"gorm.io/driver/mysql"
+	"gorm.io/gen"
 	"gorm.io/gorm"
 	"time"
 )
@@ -28,7 +29,8 @@ func InitMysql() {
 	global.Logger.Info("Init Mysql success")
 	global.Mdb = db
 	SetPool()
-	migrateTables()
+	genTableDAO()
+	//migrateTables()
 }
 
 func SetPool() {
@@ -40,6 +42,25 @@ func SetPool() {
 	sqlDb.SetConnMaxIdleTime(time.Duration(m.MaxIdleConns))
 	sqlDb.SetMaxOpenConns(m.MaxOpenConns)
 	sqlDb.SetConnMaxLifetime(time.Duration(m.ConnMaxLifetime))
+}
+
+func genTableDAO() {
+	g := gen.NewGenerator(gen.Config{
+		OutPath: "./internal/model",
+		Mode:    gen.WithoutContext | gen.WithDefaultQuery | gen.WithQueryInterface, // generate mode
+	})
+	// gormdb, _ := gorm.Open(mysql.Open("root:@(127.0.0.1:3306)/demo?charset=utf8mb4&parseTime=True&loc=Local"))
+	g.UseDB(global.Mdb)
+	//g.GenerateAllTable()
+	g.GenerateModel("go_crm_user")
+	//// Generate basic type-safe DAO API for struct `model.User` following conventions
+	//g.ApplyBasic(model.User{})
+	//
+	//// Generate Type Safe API with Dynamic SQL defined on Querier interface for `model.User` and `model.Company`
+	//g.ApplyInterface(func(Querier) {}, model.User{}, model.Company{})
+
+	// Generate the code
+	g.Execute()
 }
 
 func migrateTables() {
