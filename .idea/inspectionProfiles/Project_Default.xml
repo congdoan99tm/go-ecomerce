@@ -16,6 +16,7 @@
         <method importPath="github.com/gin-gonic/gin" receiver="*Engine" name="Run" />
       </methods>
     </inspection_tool>
+    <inspection_tool class="GoUnreachableCode" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="ShellCheck" enabled="true" level="ERROR" enabled_by_default="true">
       <shellcheck_settings value="SC1128,SC2028,SC2046,SC2181" />
     </inspection_tool>

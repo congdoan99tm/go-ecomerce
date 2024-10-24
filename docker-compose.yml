@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_go
+    ports:
+      - "33306:3306"  # Map port 33306 trên máy host đến port 3306 trên container
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: shopdevgo
+    volumes:
+      - /Users/dinos/Documents/docker-data/go/mysql:/var/lib/mysql  # Persistent storage for MySQL data
+
+  redis:
+    image: redis:latest
+    container_name: redis_go
+    ports:
+      - "6381:6379"
+    volumes:
+      - /Users/dinos/Documents/docker-data/go/redis:/data

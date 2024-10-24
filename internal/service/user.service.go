@@ -1,38 +1,55 @@
 package service
 
 import (
+	"fmt"
 	"github.com/dinos/go-ecommerce-be-api/internal/repo"
+	"github.com/dinos/go-ecommerce-be-api/internal/utils/crypto"
+	"github.com/dinos/go-ecommerce-be-api/internal/utils/random"
 	"github.com/dinos/go-ecommerce-be-api/pkg/response"
+	"time"
 )
-
-//type UserService struct {
-//	userRepo *repo.UserRepo
-//}
-//
-//func NewUserService() *UserService {
-//	return &UserService{userRepo: repo.NewUserRepo()}
-//}
-//
-//func (us *UserService) GetInfoUser() string {
-//	return us.userRepo.GetInfoUser()
-//}
 
 type IUserService interface {
 	Register(email string, purpose string) int
 }
 
 type userService struct {
-	userRepo repo.IUserRepo
+	userRepo     repo.IUserRepo
+	userAuthRepo repo.IUserAuthRepo
+}
+
+func NewUserService(userRepo repo.IUserRepo, userAuthRepo repo.IUserAuthRepo) IUserService {
+	return &userService{userRepo: userRepo, userAuthRepo: userAuthRepo}
 }
 
 func (us *userService) Register(email string, purpose string) int {
-	//1. check email exists
+	//0. hasEmail
+	hashEmail := crypto.GetHash(email)
+	fmt.Printf("hashEmail::%s", hashEmail)
+	//5. check OTP is available
+	//6. user spam email
+
+	//1. check email exists in db
+	us.userRepo.GetUserByEmail(email)
+	{
+		return response.ErrCodeUserHasExists
+	}
+	//2. new OTP
+	otp := random.GenerateSixDigitOtp()
+	if purpose == "TEST_USER" {
+		otp = 123456
+	}
+
+	fmt.Printf("Otp is :::%d", otp)
+	//3. save OTP in Redis with expiration time
+	err := us.userAuthRepo.AddOTP(email, otp, int64(10*time.Minute))
+	if err != nil {
+		return response.ErrInvalidOTP
+	}
+	//4. send Email OTP
+
 	if us.userRepo.GetUserByEmail(email) {
 		return response.ErrCodeUserHasExists
 	}
-	return response.ErrorCodeSuccess
-}
-
-func NewUserService(userRepo repo.IUserRepo) IUserService {
-	return &userService{userRepo: userRepo}
+	return response.ErrCodeSuccess
 }

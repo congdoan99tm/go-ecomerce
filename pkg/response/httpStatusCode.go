@@ -6,17 +6,19 @@ import (
 )
 
 const (
-	ErrorCodeSuccess      = 20001 // Success
-	ErrorCodeParmaInvalid = 20003 // Success
-	ErrorInvalidToken     = 30001 // Success
-	ErrCodeUserHasExists  = 50001 // user has already registered
+	ErrCodeSuccess       = 20001 // Success
+	ErrCodeParmaInvalid  = 20003 // Success
+	ErrInvalidToken      = 30001 // Success
+	ErrInvalidOTP        = 3002
+	ErrCodeUserHasExists = 50001 // user has already registered
 )
 
 var msg = map[int]string{
-	ErrorCodeSuccess:      "success",
-	ErrorCodeParmaInvalid: "Email is invalid",
-	ErrorInvalidToken:     "Token is invalid",
-	ErrCodeUserHasExists:  "user has already registered",
+	ErrCodeSuccess:       "success",
+	ErrCodeParmaInvalid:  "Email is invalid",
+	ErrInvalidToken:      "Token is invalid",
+	ErrInvalidOTP:        "OTP is invalid",
+	ErrCodeUserHasExists: "user has already registered",
 }
 
 type Response struct {
@@ -27,8 +29,8 @@ type Response struct {
 
 func SuccessResponse(c *gin.Context, data interface{}) {
 	c.JSON(http.StatusOK, Response{
-		Code:    ErrorCodeSuccess,
-		Message: msg[ErrorCodeSuccess],
+		Code:    ErrCodeSuccess,
+		Message: msg[ErrCodeSuccess],
 		Data:    data,
 	})
 }
