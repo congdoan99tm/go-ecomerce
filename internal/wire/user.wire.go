@@ -10,6 +10,7 @@ package wire
 //func InitUserRouterHandle() (*controllers.UserController, error) {
 //	wire.Build(
 //		repo.NewUserRepo,
+//		repo.NewUserAuthRepo,
 //		service.NewUserService,
 //		controllers.NewUserController,
 //	)

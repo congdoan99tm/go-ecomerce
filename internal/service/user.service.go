@@ -5,7 +5,9 @@ import (
 	"github.com/dinos/go-ecommerce-be-api/internal/repo"
 	"github.com/dinos/go-ecommerce-be-api/internal/utils/crypto"
 	"github.com/dinos/go-ecommerce-be-api/internal/utils/random"
+	"github.com/dinos/go-ecommerce-be-api/internal/utils/sendto"
 	"github.com/dinos/go-ecommerce-be-api/pkg/response"
+	"strconv"
 	"time"
 )
 
@@ -30,8 +32,7 @@ func (us *userService) Register(email string, purpose string) int {
 	//6. user spam email
 
 	//1. check email exists in db
-	us.userRepo.GetUserByEmail(email)
-	{
+	if us.userRepo.GetUserByEmail(email) {
 		return response.ErrCodeUserHasExists
 	}
 	//2. new OTP
@@ -47,9 +48,9 @@ func (us *userService) Register(email string, purpose string) int {
 		return response.ErrInvalidOTP
 	}
 	//4. send Email OTP
-
-	if us.userRepo.GetUserByEmail(email) {
-		return response.ErrCodeUserHasExists
+	err = sendto.SendTextEmailOTP([]string{email}, "congdoan99tm@gmail.com", strconv.Itoa(otp))
+	if err != nil {
+		return response.ErrSendEmailOtp
 	}
 	return response.ErrCodeSuccess
 }

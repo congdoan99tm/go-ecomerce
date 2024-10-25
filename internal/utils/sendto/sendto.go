@@ -12,7 +12,7 @@ const (
 	SMTPHost     = "smtp.gmail.com"
 	SMTPPort     = "587"
 	SMTPUser     = "colucnatrat92@gmail.com"
-	SMTPPassword = "a"
+	SMTPPassword = "grtq oazw jkoa nohg"
 )
 
 type EmailAddress struct {
@@ -42,6 +42,33 @@ func SendTextEmailOTP(to []string, from string, otp string) error {
 		To:      to,
 		Subject: "OTP verification",
 		Body:    fmt.Sprintf("Your OTP is %s, Please enter it to verify your account.", otp),
+	}
+	messageMail := BuildMessage(contentEmail)
+	auth := smtp.PlainAuth("", SMTPUser, SMTPPassword, SMTPHost)
+	err := smtp.SendMail(SMTPHost+":"+SMTPPort, auth, from, to, []byte(messageMail))
+	if err != nil {
+		//global.Logger.Error("Email send failed", zap.Error(err))
+		return err
+	}
+	return nil
+}
+
+// func SendTemplateEmailOtp(to []string, htmlTemplate string,
+//
+//	dateTemplate map[string]interface{}) error {
+//
+// }
+//
+//	func getMailTemplate(nameTemplate string, dataTemplate map[string]interface{}) (string, error) {
+//		htmlTemplate := new(bytes.Buffer)
+//		t := template.Must(template.New(nameTemplate).ParseFiles("templates-email/" + nameTemplate))
+//	}
+func send(to []string, from string, htmlTemplate string) error {
+	contentEmail := Mail{
+		From:    EmailAddress{Address: from, Name: "test"},
+		To:      to,
+		Subject: "OTP verification",
+		Body:    htmlTemplate,
 	}
 	messageMail := BuildMessage(contentEmail)
 	auth := smtp.PlainAuth("", SMTPUser, SMTPPassword, SMTPHost)

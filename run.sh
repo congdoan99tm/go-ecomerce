@@ -5,7 +5,7 @@ CYAN='\033[0;36m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-COMMIT='go(24) 50%'
+COMMIT='go(24) 80%'
 
 echo "${YELLOW}Pushing... ${NC}"
 

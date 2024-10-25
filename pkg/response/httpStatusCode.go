@@ -9,7 +9,8 @@ const (
 	ErrCodeSuccess       = 20001 // Success
 	ErrCodeParmaInvalid  = 20003 // Success
 	ErrInvalidToken      = 30001 // Success
-	ErrInvalidOTP        = 3002
+	ErrInvalidOTP        = 30002
+	ErrSendEmailOtp      = 30003
 	ErrCodeUserHasExists = 50001 // user has already registered
 )
 
@@ -18,6 +19,7 @@ var msg = map[int]string{
 	ErrCodeParmaInvalid:  "Email is invalid",
 	ErrInvalidToken:      "Token is invalid",
 	ErrInvalidOTP:        "OTP is invalid",
+	ErrSendEmailOtp:      "Failed to send email OTP",
 	ErrCodeUserHasExists: "user has already registered",
 }
 
@@ -32,5 +34,12 @@ func SuccessResponse(c *gin.Context, data interface{}) {
 		Code:    ErrCodeSuccess,
 		Message: msg[ErrCodeSuccess],
 		Data:    data,
+	})
+}
+
+func ErrResponse(c *gin.Context, errCode int, errMsg string) {
+	c.JSON(http.StatusOK, Response{
+		Code:    errCode,
+		Message: errMsg,
 	})
 }
