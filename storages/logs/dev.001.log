@@ -31,3 +31,14 @@
 {"level":"INFO","time":"2024-10-25T16:15:13.517+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
 {"level":"INFO","time":"2024-10-25T16:15:13.525+0700","caller":"initialize/mysql.go:29","msg":"Init Mysql success"}
 {"level":"INFO","time":"2024-10-25T16:15:13.589+0700","caller":"initialize/redis.go:41","msg":"value score is::","score":"100"}
+{"level":"INFO","time":"2024-10-28T15:17:55.432+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
+{"level":"ERROR","time":"2024-10-28T15:17:55.433+0700","caller":"initialize/mysql.go:16","msg":"Init Mysql failed","error":"dial tcp 127.0.0.1:33306: connect: connection refused","stacktrace":"github.com/dinos/go-ecommerce-be-api/internal/initialize.checkErrorPanic\n\t/Users/dinos/Desktop/go-ecommerce-be-api/internal/initialize/mysql.go:16\ngithub.com/dinos/go-ecommerce-be-api/internal/initialize.InitMysql\n\t/Users/dinos/Desktop/go-ecommerce-be-api/internal/initialize/mysql.go:28\ngithub.com/dinos/go-ecommerce-be-api/internal/initialize.Run\n\t/Users/dinos/Desktop/go-ecommerce-be-api/internal/initialize/run.go:14\nmain.main\n\t/Users/dinos/Desktop/go-ecommerce-be-api/cmd/server/main.go:7\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:272"}
+{"level":"INFO","time":"2024-10-28T15:19:11.601+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
+{"level":"INFO","time":"2024-10-28T15:19:11.625+0700","caller":"initialize/mysql.go:29","msg":"Init Mysql success"}
+{"level":"INFO","time":"2024-10-28T15:19:11.695+0700","caller":"initialize/redis.go:41","msg":"value score is::","score":"100"}
+{"level":"INFO","time":"2024-10-28T15:52:57.367+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
+{"level":"INFO","time":"2024-10-28T15:52:57.376+0700","caller":"initialize/mysql.go:29","msg":"Init Mysql success"}
+{"level":"INFO","time":"2024-10-28T15:52:57.453+0700","caller":"initialize/redis.go:41","msg":"value score is::","score":"100"}
+{"level":"INFO","time":"2024-10-28T16:05:28.405+0700","caller":"initialize/run.go:13","msg":"Config Log ok!!","ok":"Success"}
+{"level":"INFO","time":"2024-10-28T16:05:28.420+0700","caller":"initialize/mysql.go:29","msg":"Init Mysql success"}
+{"level":"INFO","time":"2024-10-28T16:05:28.490+0700","caller":"initialize/redis.go:41","msg":"value score is::","score":"100"}

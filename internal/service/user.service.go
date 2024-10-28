@@ -1,13 +1,15 @@
 package service
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
+	"github.com/dinos/go-ecommerce-be-api/global"
 	"github.com/dinos/go-ecommerce-be-api/internal/repo"
 	"github.com/dinos/go-ecommerce-be-api/internal/utils/crypto"
 	"github.com/dinos/go-ecommerce-be-api/internal/utils/random"
-	"github.com/dinos/go-ecommerce-be-api/internal/utils/sendto"
 	"github.com/dinos/go-ecommerce-be-api/pkg/response"
-	"strconv"
+	"github.com/segmentio/kafka-go"
 	"time"
 )
 
@@ -48,7 +50,22 @@ func (us *userService) Register(email string, purpose string) int {
 		return response.ErrInvalidOTP
 	}
 	//4. send Email OTP
-	err = sendto.SendTextEmailOTP([]string{email}, "congdoan99tm@gmail.com", strconv.Itoa(otp))
+	//err = sendto.SendTextEmailOTP([]string{email}, "congdoan99tm@gmail.com", strconv.Itoa(otp))
+	//if err != nil {
+	fmt.Printf("err sendto :%v", err)
+	//	return response.ErrSendEmailOtp
+	//}
+	/// send otp via Kafka
+	body := make(map[string]interface{})
+	body["otp"] = otp
+	body["email"] = email
+	bodyRequest, _ := json.Marshal(body)
+	message := kafka.Message{
+		Key:   []byte("otp-auth"),
+		Value: []byte(bodyRequest),
+		Time:  time.Now(),
+	}
+	err = global.KafkaProducer.WriteMessages(context.Background(), message)
 	if err != nil {
 		return response.ErrSendEmailOtp
 	}

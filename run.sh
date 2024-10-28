@@ -5,7 +5,7 @@ CYAN='\033[0;36m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-COMMIT='go(24) 80%'
+COMMIT='go(25-26) - sqlc, kafka'
 
 echo "${YELLOW}Pushing... ${NC}"
 
