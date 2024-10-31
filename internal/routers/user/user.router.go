@@ -1,6 +1,7 @@
 package user
 
 import (
+	"github.com/dinos/go-ecommerce-be-api/internal/controllers/account"
 	"github.com/dinos/go-ecommerce-be-api/internal/wire"
 	"github.com/gin-gonic/gin"
 )
@@ -13,8 +14,8 @@ func (pr *UserRouter) InitUserRouter(Router *gin.RouterGroup) {
 	// public routers
 	userRouterPublic := Router.Group("/user", userController.Register)
 	{
-		userRouterPublic.POST("/register")
-		userRouterPublic.POST("/otp")
+		userRouterPublic.POST("/register", account.Login.Register)
+		userRouterPublic.POST("/login", account.Login.Login)
 
 	}
 	// private routers
