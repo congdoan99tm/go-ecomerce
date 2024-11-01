@@ -34,6 +34,9 @@ resetse:
 sqlgen:
 	sqlc generate
 
-.PHONY: dev upse downse resetse docker_build docker_stop docker_up sqlgen
+swag:
+	swag init -g ./cmd/server/main.go -o ./cmd/swag/docs
+
+.PHONY: dev upse downse resetse docker_build docker_stop docker_up sqlgen swag
 
 .PHONY: air

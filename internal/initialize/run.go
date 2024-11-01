@@ -3,10 +3,11 @@ package initialize
 import (
 	"fmt"
 	"github.com/dinos/go-ecommerce-be-api/global"
+	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
 
-func Run() {
+func Run() *gin.Engine {
 	LoadConfig()
 	fmt.Println("Loading configuration mysql ...", global.Config.Mysql.Username)
 	InitLogger()
@@ -16,5 +17,5 @@ func Run() {
 	InitRedis()
 	InitKafka()
 	r := InitRouter()
-	r.Run(":8002")
+	return r
 }

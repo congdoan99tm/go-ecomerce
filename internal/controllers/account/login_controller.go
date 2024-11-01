@@ -24,6 +24,17 @@ func (c *cUserLogin) Login(ctx *gin.Context) {
 	}
 	response.SuccessResponse(ctx, nil)
 }
+
+// User Registration documentation
+// @Summary      User Registration
+// @Description  When user is registered send otp to email
+// @Tags         accounts management
+// @Accept       json
+// @Produce      json
+// @Param        payload body model.RegisterInput true "payload"
+// @Success      200  {object}  response.Response
+// @Failure      500  {object}  response.ErrorResponse
+// @Router       /user/register [post]
 func (c *cUserLogin) Register(ctx *gin.Context) {
 	var params model.RegisterInput
 	if err := ctx.ShouldBind(&params); err != nil {
